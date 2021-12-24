@@ -62,9 +62,13 @@ class HomePage extends StatelessWidget {
         onPressed: () {
           if (_key.currentState!.validate()) {
             _key.currentState!.save();
-            Navigator.of(context).pushNamed(
-              "/a",
-              arguments: Category(fname: fname, sname: sname),
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => Category(
+                  fname: fname,
+                  sname: sname,
+                ),
+              ),
             );
           }
         },
