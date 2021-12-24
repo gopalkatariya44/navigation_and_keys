@@ -19,43 +19,39 @@ class HomePage extends StatelessWidget {
               accountEmail: Text("gop@g.c"),
             ),
             ListTile(
-              leading: Icon(Icons.person),
-              onTap: () => Navigator.of(context).pushNamed("/a"),
-            ),
+                leading: Icon(Icons.person),
+                onTap: () => Navigator.of(context).pop()),
             ListTile(
-              leading: Icon(Icons.close),
-              onTap: () => Navigator.of(context).pop(),
-            )
+                leading: Icon(Icons.close),
+                onTap: () => Navigator.of(context).pop()),
           ],
         ),
       ),
-      body: Container(
-        child: Form(
-          key: _key,
-          child: Column(
-            children: [
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "enter value";
-                  }
-                },
-                onSaved: (value) {
-                  fname = value!;
-                },
-              ),
-              TextFormField(
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "enter value";
-                  }
-                },
-                onSaved: (value) {
-                  sname = value!;
-                },
-              ),
-            ],
-          ),
+      body: Form(
+        key: _key,
+        child: Column(
+          children: [
+            TextFormField(
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "enter value";
+                }
+              },
+              onSaved: (value) {
+                fname = value!;
+              },
+            ),
+            TextFormField(
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return "enter value";
+                }
+              },
+              onSaved: (value) {
+                sname = value!;
+              },
+            ),
+          ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
