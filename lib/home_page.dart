@@ -1,12 +1,75 @@
 import 'package:flutter/material.dart';
+import 'package:navigation_and_keys/category.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({ Key? key }) : super(key: key);
-
+  late String fname, sname;
+  final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("N & K's"),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(),
+              accountName: Text("gop"),
+              accountEmail: Text("gop@g.c"),
+            ),
+            ListTile(
+              leading: Icon(Icons.person),
+              onTap: () => Navigator.of(context).pushNamed("/a"),
+            ),
+            ListTile(
+              leading: Icon(Icons.close),
+              onTap: () => Navigator.of(context).pop(),
+            )
+          ],
+        ),
+      ),
+      body: Container(
+        child: Form(
+          key: _key,
+          child: Column(
+            children: [
+              TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "enter value";
+                  }
+                },
+                onSaved: (value) {
+                  fname = value!;
+                },
+              ),
+              TextFormField(
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return "enter value";
+                  }
+                },
+                onSaved: (value) {
+                  sname = value!;
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          if (_key.currentState!.validate()) {
+            _key.currentState!.save();
+            Navigator.of(context).pushNamed(
+              "/a",
+              arguments: Category(fname: fname, sname: sname),
+            );
+          }
+        },
+        child: Icon(Icons.close_fullscreen),
+      ),
     );
   }
 }

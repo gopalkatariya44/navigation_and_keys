@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigation_and_keys/category.dart';
 import 'package:navigation_and_keys/home_page.dart';
 
 void main() {
@@ -15,8 +16,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
+      home: HomePage(),
+      routes: <String, WidgetBuilder>{
+        "/a": (ctx) => Category(
+            ),
+      },
     );
   }
 }
-
